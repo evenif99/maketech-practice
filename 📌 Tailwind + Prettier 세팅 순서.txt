@@ -1,0 +1,41 @@
+📌 Tailwind + Prettier 세팅 순서
+
+1. 폴더명 영문으로 변경
+➡️ (예: gohyang-dakbal)
+
+➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖
+
+2. npm 초기화
+➡️ npm init -y
+
+➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖
+
+3. 패키지 설치
+➡️ npm install -D tailwindcss @tailwindcss/cli prettier prettier-plugin-tailwindcss
+
+➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖
+
+4. Tailwind 초기화 (v4는 config 필요 없음)
+➡️ mkdir src
+➡️ echo "@import 'tailwindcss';" > src/input.css
+
+➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖
+
+5. 빌드/감시 실행
+➡️ npx @tailwindcss/cli -i ./src/input.css -o ./src/output.css --watch
+
+➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖
+
+6. Prettier 설정 파일 생성 (.prettierrc)
+➡️ {
+        "plugins": ["prettier-plugin-tailwindcss"]
+     }
+
+➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖
+
+7. Prettier 실행
+➡️ npx prettier --write .
+
+➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖
+
+8. npm install -D prettier prettier-plugin-tailwindcss

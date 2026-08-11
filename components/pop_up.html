@@ -1,0 +1,152 @@
+<!-- 팝업 -->
+<div class="flex-center fixed inset-0 z-1500 bg-black/60">
+    <div class="flex-center w-[calc(100%-32px)] max-w-125 flex-col">
+        <div class="swiper popupSwiper aspect-square w-full">
+            <div class="swiper-wrapper size-full">
+                <a href="#" target="_blank" class="swiper-slide size-full bg-[#f5f5f5]">
+                    <img src="/assets/images/other/sample.jpg" alt="팝업 이미지" class="size-full object-cover" />
+                </a>
+                <div class="swiper-slide size-full bg-[#f5f5f5]">
+                    <img src="/assets/images/other/sample.jpg" alt="팝업 이미지" class="size-full object-cover" />
+                </div>
+            </div>
+
+            <div class="swiper-pagination"></div>
+        </div>
+
+        <div
+            class="bg-primary-800 flex h-8 w-full items-center justify-between pr-2 pl-3 text-sm leading-none text-white"
+        >
+            <button type="button" onclick="OnedayNonePopup()" data-i18n="common.popup.onedayNonePopup"></button>
+            <button
+                type="button"
+                onclick="nonePopup()"
+                class="flex-center size-5 overflow-hidden"
+                data-i18n="[aria-label]common.popup.close"
+            >
+                <i data-lucide="x"></i>
+            </button>
+        </div>
+    </div>
+</div>
+
+<script>
+    function nonePopup() {
+        const el = document.getElementById("pop_up");
+        if (el) el.style.display = "none";
+    }
+
+    function setCookie(name, value, hours) {
+        const date = new Date();
+        date.setTime(date.getTime() + hours * 60 * 60 * 1000);
+        const expires = "expires=" + date.toUTCString();
+        document.cookie = name + "=" + value + ";" + expires + ";path=/";
+    }
+
+    function getCookie(name) {
+        const cookieArr = document.cookie.split(";");
+        for (let i = 0; i < cookieArr.length; i++) {
+            let cookie = cookieArr[i].trim();
+            if (cookie.indexOf(name + "=") === 0) {
+                return cookie.substring(name.length + 1);
+            }
+        }
+        return null;
+    }
+
+    function OnedayNonePopup() {
+        setCookie("hidePopup", "true", 24);
+        nonePopup();
+    }
+
+    function loadImage(src) {
+        return new Promise((resolve, reject) => {
+            const img = new Image();
+            img.onload = () => resolve(src);
+            img.onerror = img.onabort = () => reject(src);
+            img.src = src;
+        });
+    }
+
+    function isValidSrc(src) {
+        if (!src) return false;
+        const trimmed = src.trim();
+        return !!trimmed;
+    }
+
+    async function initPopup() {
+        const popUp = document.getElementById("pop_up");
+        if (!popUp) return;
+
+        const hidePopup = getCookie("hidePopup");
+        if (hidePopup === "true") {
+            nonePopup();
+            return;
+        }
+
+        const swiperEl = popUp.querySelector(".popupSwiper");
+        const wrapper = swiperEl?.querySelector(".swiper-wrapper");
+
+        if (!wrapper) {
+            nonePopup();
+            return;
+        }
+
+        const slideEls = Array.from(wrapper.querySelectorAll(".swiper-slide"));
+        const imgInfos = slideEls
+            .map((slide) => {
+                const img = slide.querySelector("img");
+                return img ? { slide, img, src: img.getAttribute("src") } : null;
+            })
+            .filter(Boolean)
+            .filter(({ src }) => isValidSrc(src));
+
+        if (imgInfos.length === 0) {
+            nonePopup();
+            return;
+        }
+
+        const results = await Promise.allSettled(imgInfos.map(({ src }) => loadImage(src)));
+
+        const validSet = new Set(
+            results.map((r, i) => (r.status === "fulfilled" ? imgInfos[i].src : null)).filter(Boolean),
+        );
+
+        imgInfos.forEach(({ slide, src }) => {
+            if (!validSet.has(src)) {
+                slide.remove();
+            }
+        });
+
+        const finalSlides = Array.from(wrapper.querySelectorAll(".swiper-slide"));
+
+        if (finalSlides.length === 0) {
+            nonePopup();
+            return;
+        }
+
+        popUp.style.display = "block";
+
+        const paginationEl = popUp.querySelector(".swiper-pagination");
+
+        if (finalSlides.length > 1 && typeof Swiper !== "undefined") {
+            new Swiper(swiperEl, {
+                slidesPerView: 1,
+                spaceBetween: 0,
+                loop: true,
+                autoplay: {
+                    delay: 3000,
+                    disableOnInteraction: false,
+                },
+                pagination: {
+                    el: paginationEl,
+                    clickable: true,
+                },
+            });
+        } else if (paginationEl) {
+            paginationEl.style.display = "none";
+        }
+    }
+
+    initPopup();
+</script>

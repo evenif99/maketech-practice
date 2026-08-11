@@ -1,0 +1,143 @@
+/*===========================================================================
+폰트
+============================================================================*/
+@font-face {
+    font-family: "Pretendard";
+    font-weight: 100;
+    font-style: normal;
+    src: url("../assets/fonts/Pretendard-Thin.woff2") format("woff2");
+    font-display: swap;
+}
+@font-face {
+    font-family: "Pretendard";
+    font-weight: 200;
+    font-style: normal;
+    src: url("../assets/fonts/Pretendard-ExtraLight.woff2") format("woff2");
+    font-display: swap;
+}
+@font-face {
+    font-family: "Pretendard";
+    font-weight: 300;
+    font-style: normal;
+    src: url("../assets/fonts/Pretendard-Light.woff2") format("woff2");
+    font-display: swap;
+}
+@font-face {
+    font-family: "Pretendard";
+    font-weight: 400;
+    font-style: normal;
+    src: url("../assets/fonts/Pretendard-Regular.woff2") format("woff2");
+    font-display: swap;
+}
+@font-face {
+    font-family: "Pretendard";
+    font-weight: 500;
+    font-style: normal;
+    src: url("../assets/fonts/Pretendard-Medium.woff2") format("woff2");
+    font-display: swap;
+}
+@font-face {
+    font-family: "Pretendard";
+    font-weight: 600;
+    font-style: normal;
+    src: url("../assets/fonts/Pretendard-SemiBold.woff2") format("woff2");
+    font-display: swap;
+}
+@font-face {
+    font-family: "Pretendard";
+    font-weight: 700;
+    font-style: normal;
+    src: url("../assets/fonts/Pretendard-Bold.woff2") format("woff2");
+    font-display: swap;
+}
+@font-face {
+    font-family: "Pretendard";
+    font-weight: 800;
+    font-style: normal;
+    src: url("../assets/fonts/Pretendard-ExtraBold.woff2") format("woff2");
+    font-display: swap;
+}
+@font-face {
+    font-family: "Pretendard";
+    font-weight: 900;
+    font-style: normal;
+    src: url("../assets/fonts/Pretendard-Black.woff2") format("woff2");
+    font-display: swap;
+}
+@font-face {
+    font-family: "xeicon";
+    src: url("../assets/fonts/xeicon.woff2") format("woff2");
+    font-display: swap;
+}
+
+/*===========================================================================
+CSS 초기화
+============================================================================*/
+@layer base {
+    * {
+        background-repeat: no-repeat;
+    }
+    html {
+        scroll-behavior: smooth;
+    }
+    body {
+        line-height: 1.5;
+        font-family: "Pretendard", sans-serif;
+        font-size: 16px;
+        word-break: keep-all;
+        color: #202020;
+
+        /* 폰트 렌더링 최적화 (Mac/iOS) */
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+
+        /* 모바일 브라우저 터치 하이라이트 제거 */
+        -webkit-tap-highlight-color: transparent;
+    }
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        line-height: 1.25;
+    }
+    label {
+        cursor: pointer;
+    }
+    a {
+        display: block;
+    }
+    textarea {
+        resize: none;
+    }
+    input,
+    textarea,
+    select,
+    button {
+        font-family: inherit;
+    }
+    button {
+        cursor: pointer;
+    }
+    .xeicon {
+        font-family: "xeicon";
+        font-style: normal;
+        line-height: 1;
+    }
+    .ck-content :is(h1, h2, h3, h4, h5, h6, ul, ol, li, a) {
+        all: revert;
+    }
+    .flex-center {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .popupSwiper {
+        .swiper-pagination {
+            .swiper-pagination-bullet {
+                background: var(--color-primary-700) !important;
+            }
+        }
+    }
+}
