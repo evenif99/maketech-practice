@@ -1,0 +1,73 @@
+/* =========================
+   Header
+========================= */
+
+.nav-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.nav-link {
+    color: var(--color-black-700);
+    transition: color 0.2s ease;
+}
+
+/* li 영역에 마우스가 들어오면 글자색 변경 */
+.nav-item:hover > .nav-link {
+    color: var(--color-red-500);
+}
+
+/* 드롭다운 기본 상태 */
+.submenu {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    padding: 0 20px;
+
+    background-color: var(--color-gray-50);
+
+    border-radius: 0 0 15px 15px;
+
+    text-align: center;
+
+    transform: translateX(-50%);
+
+    max-height: 0;
+    overflow: hidden;
+
+    transition:
+        max-height 0.35s ease,
+        padding 0.35s ease;
+}
+
+.submenu a {
+    color: var(--color-black-600);
+    font-weight: 400;
+}
+
+.submenu a:hover {
+    color: var(--color-red-500);
+}
+
+/* li 전체 영역에서 드롭다운 활성화 */
+.nav-item:hover .submenu {
+    max-height: 400px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.language-selector {
+    position: relative;
+}
+
+.language-button {
+    display: flex;
+    align-items: center;
+}
