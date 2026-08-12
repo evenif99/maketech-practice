@@ -9,7 +9,10 @@ function initLucide() {
 }
 
 $(document).ready(function () {
-    $("#header").load("/components/header.html", initLucide);
+    $("#header").load("/components/header.html", function () {
+        initLucide();
+        initLanguageSelector();
+    });
     $("#footer").load("/components/footer.html", initLucide);
     $("#pagination").load("/components/pagination.html", initLucide);
     $("#top_menu").load("/components/top_menu.html", initLucide);

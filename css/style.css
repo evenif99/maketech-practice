@@ -57,11 +57,15 @@
 }
 
 /* li 전체 영역에서 드롭다운 활성화 */
-.nav-item:hover .submenu {
+.nav-item:hover > .submenu {
     max-height: 400px;
     padding-top: 30px;
     padding-bottom: 30px;
 }
+
+/* =========================
+   Language Selector
+========================= */
 
 .language-selector {
     position: relative;
@@ -70,4 +74,52 @@
 .language-button {
     display: flex;
     align-items: center;
+    gap: 8px;
+
+    height: 40px;
+    padding: 0 20px;
+
+    background-color: var(--color-red-500);
+    color: #ffffff;
+
+    border-radius: 9999px;
+}
+
+.language-menu {
+    position: absolute;
+
+    top: calc(100% + 8px);
+    left: 0;
+
+    width: 100%;
+
+    padding: 8px 0;
+
+    background-color: #ffffff;
+    border-radius: 16px;
+
+    visibility: hidden;
+
+    z-index: 100;
+}
+
+.language-selector.is-open .language-menu {
+    visibility: visible;
+}
+
+.language-option {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    width: 100%;
+    padding: 8px 14px;
+
+    color: var(--color-black-600);
+
+    text-align: left;
+}
+
+.language-flag {
+    font-size: 16px;
 }

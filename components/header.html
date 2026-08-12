@@ -1,14 +1,13 @@
 <header class="w-full bg-white">
     <div class="mx-auto flex h-21.75 w-full max-w-400 items-center justify-between">
-        <h1 class="flex shrink-0 items-center">
-            <a href="#" class="font-bold">
+        <h1 class="flex items-center">
+            <a href="#" class="max-w-35 min-w-30">
                 <img src="/assets/images/logo/logo-maketeck.svg" alt="메이크텍" class="h-auto w-full" />
             </a>
             <span class="mr-5 ml-6.5 h-7.5 w-px bg-black/10"></span>
-            <a href="#" class="font-bold">
+            <a href="#" class="max-w-43.75 min-w-38.75">
                 <img src="/assets/images/logo/logo-sonicskorea.svg" alt="소닉스코리아" class="h-auto w-full" />
             </a>
-            <!-- 이미지로 대체 -->
         </h1>
 
         <nav class="h-full">
@@ -59,15 +58,25 @@
                 </li>
                 <li class="language-selector">
                     <!-- 현재 선택된 언어 출력 -->
-                    <button
-                        type="button"
-                        aria-label="언어 변경"
-                        aria-expanded="false"
-                        class="flex h-10 items-center gap-2 rounded-full bg-red-500 px-5 text-white"
-                    >
+                    <button type="button" aria-label="언어 변경" aria-expanded="false" class="language-button">
                         <i data-lucide="globe" class="size-4.5"></i>
-                        <span>KOR</span>
+                        <span class="language-current">KOR</span>
                     </button>
+
+                    <ul class="language-menu">
+                        <li>
+                            <button type="button" class="language-option" data-lang="KOR">
+                                <span class="language-flag">KR</span>
+                                <span>KOR</span>
+                            </button>
+                        </li>
+                        <li>
+                            <button type="button" class="language-option" data-lang="ENG">
+                                <span class="language-flag">EN</span>
+                                <span>ENG</span>
+                            </button>
+                        </li>
+                    </ul>
                 </li>
             </ul>
         </nav>
