@@ -123,3 +123,12 @@
 .language-flag {
     font-size: 16px;
 }
+
+/* =========================
+   Video Settings
+========================= */
+.hero {
+    position: relative;
+
+    width: calc(100% - 48px);
+}
