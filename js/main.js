@@ -32,3 +32,29 @@ function initLanguageSelector() {
         }
     });
 }
+
+function initTopButton() {
+    const topButton = document.querySelector(".top-button");
+
+    if (!topButton) return;
+
+    topButton.addEventListener("click", () => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+        });
+    });
+}
+
+function initFloatingMenu() {
+    const floatingButtons = document.querySelector(".floating-buttons");
+    const consultationButton = document.querySelector(".consultation-button");
+
+    if (!floatingButtons || !consultationButton) return;
+
+    consultationButton.addEventListener("click", () => {
+        const isOpen = floatingButtons.classList.toggle("is-open");
+
+        consultationButton.setAttribute("aria-expanded", String(isOpen));
+    });
+}
