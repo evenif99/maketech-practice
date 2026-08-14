@@ -142,3 +142,19 @@ function initAboutAnimation() {
             "-=0.3",
         );
 }
+
+function initProcessAnimation() {
+    gsap.from(".process-inner", {
+        scrollTrigger: {
+            trigger: ".process-section",
+            start: "top 75%",
+            once: true,
+        },
+
+        opacity: 0,
+        y: 50,
+
+        duration: 0.8,
+        ease: "power3.out",
+    });
+}

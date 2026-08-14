@@ -28,5 +28,7 @@ $(document).ready(function () {
     initLucide();
 
     initAboutAnimation();
+    initProcessAnimation();
+
     initCounter();
 });

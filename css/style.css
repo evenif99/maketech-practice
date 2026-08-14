@@ -603,14 +603,17 @@ main {
 .process-bg {
     position: absolute;
     inset: 0;
+
     z-index: 0;
     pointer-events: none;
 }
 
 .process-bg img {
     display: block;
+
     width: 100%;
     height: 100%;
+
     object-fit: cover;
 }
 
@@ -637,7 +640,6 @@ main {
 
     padding: 10px 20px;
 
-    background-color: transparent;
     color: var(--color-red-500);
 
     border: 1px solid var(--color-red-500);
@@ -660,6 +662,11 @@ main {
 
 .process-list {
     --process-gap: clamp(24px, 2.3vw, 44px);
+    --process-step-size: 44px;
+    --process-icon-size: 120px;
+    --process-line-pattern: repeating-linear-gradient(to right, var(--color-red-500) 0 4px, transparent 4px 8px);
+
+    position: relative;
 
     display: flex;
     flex-wrap: wrap;
@@ -672,7 +679,6 @@ main {
     width: min(100%, 1120px);
 
     margin: clamp(52px, 4.5vw, 86px) auto 0;
-
     padding: 0;
 
     list-style: none;
@@ -682,25 +688,20 @@ main {
     position: relative;
 
     display: flex;
+    flex: 0 0 calc((100% - var(--process-gap) * 3) / 4);
     flex-direction: column;
     align-items: center;
 
     min-width: 0;
 
     text-align: center;
-
-    flex: 0 0 calc((100% - var(--process-gap) * 3) / 4);
 }
 
 .process-icon {
     display: block;
 
-    width: clamp(76px, calc(11.25vw - 96px), 120px);
+    width: var(--process-icon-size);
     height: auto;
-
-    max-width: 100%;
-
-    flex-shrink: 0;
 }
 
 .process-text {
@@ -722,12 +723,13 @@ main {
 
 .process-step {
     position: relative;
+
     display: flex;
     align-items: center;
     justify-content: center;
 
-    width: 44px;
-    height: 44px;
+    width: var(--process-step-size);
+    height: var(--process-step-size);
 
     margin-top: 24px;
 
@@ -739,39 +741,66 @@ main {
     font-size: 22px;
     font-weight: 700;
 
-    z-index: 2;
-
     box-shadow: 0 0 14px rgba(194, 54, 78, 0.7);
+
+    z-index: 2;
+}
+
+.process-item::before {
+    position: absolute;
+
+    left: 50%;
+    bottom: calc(var(--process-step-size) / 2);
+
+    width: 200vw;
+    height: 1px;
+
+    transform: translateX(-50%);
+
+    background: var(--process-line-pattern);
+
+    pointer-events: none;
+
+    z-index: 0;
+}
+
+.process-item::after {
+    position: absolute;
+
+    left: calc(100% + var(--process-gap) / 2 - 5px);
+    bottom: calc(var(--process-step-size) / 2 - 6px);
+
+    width: 0;
+    height: 0;
+
+    border-top: 6px solid transparent;
+    border-bottom: 6px solid transparent;
+    border-left: 10px solid var(--color-red-500);
+
+    z-index: 1;
 }
 
 @media (min-width: 1281px) and (max-width: 1600px) {
-    /* =========================
-       About Us
-    ========================= */
-
     .company-section::before {
         background-size: 100% auto;
         background-position: center top;
     }
 
     .company-stats {
-        width: fit-content;
-
-        justify-content: center;
         gap: 48px;
 
         margin-top: 105px;
-        margin-right: auto;
-        margin-left: auto;
     }
 
     .company-intro-content {
         width: max-content;
+
         flex-shrink: 0;
     }
 
     .stat-item {
         height: auto;
+
         justify-content: flex-start;
     }
 
@@ -784,18 +813,56 @@ main {
     }
 }
 
+@media (min-width: 1536px) {
+    .process-inner {
+        padding-top: 145px;
+        padding-bottom: 145px;
+    }
+
+    .process-list {
+        width: min(100%, 1370px);
+
+        margin-top: 120px;
+
+        row-gap: 70px;
+    }
+
+    .process-icon {
+        width: 120px;
+    }
+
+    .process-list {
+        width: min(100%, 1370px);
+    }
+
+    .process-icon {
+        width: 120px;
+    }
+
+    .process-item:nth-child(1)::before,
+    .process-item:nth-child(5)::before {
+        content: "";
+    }
+
+    .process-item:nth-child(1)::after,
+    .process-item:nth-child(2)::after,
+    .process-item:nth-child(3)::after,
+    .process-item:nth-child(5)::after,
+    .process-item:nth-child(6)::after {
+        content: "";
+    }
+}
+
 @media (max-width: 1535px) {
     .process-list {
         --process-gap: clamp(8px, 1vw, 14px);
+        --process-step-size: 32px;
 
         width: 100%;
-        max-width: none;
-
-        column-gap: var(--process-gap);
     }
 
     .process-item {
-        flex: 0 0 clamp(155px, 11.7vw, 165px);
+        flex-basis: clamp(155px, 11.7vw, 165px);
     }
 
     .process-text {
@@ -803,9 +870,6 @@ main {
     }
 
     .process-step {
-        width: 32px;
-        height: 32px;
-
         font-size: 14px;
     }
 }
@@ -817,10 +881,8 @@ main {
     }
 
     .process-list {
-        --process-step-size: 32px;
         --process-line-overhang: 32px;
 
-        position: relative;
         margin-top: 102px;
     }
 
@@ -831,59 +893,56 @@ main {
 
         left: calc(var(--process-line-overhang) * -1);
         right: calc(var(--process-line-overhang) * -1);
-
         bottom: calc(var(--process-step-size) / 2);
 
         height: 1px;
 
-        background: repeating-linear-gradient(to right, var(--color-red-500) 0 4px, transparent 4px 8px);
+        background: var(--process-line-pattern);
+
+        pointer-events: none;
 
         z-index: 0;
-        pointer-events: none;
-    }
-
-    .process-item {
-        position: relative;
     }
 
     .process-item:not(:last-child)::after {
         content: "";
-
-        position: absolute;
-
-        left: calc(100% + var(--process-gap) / 2 - 5px);
-        bottom: calc(var(--process-step-size) / 2 - 6px);
-
-        width: 0;
-        height: 0;
-
-        border-top: 6px solid transparent;
-        border-bottom: 6px solid transparent;
-        border-left: 10px solid var(--color-red-500);
-
-        z-index: 1;
     }
 
-    .process-step {
-        margin-top: 8px;
-        position: relative;
-        z-index: 2;
+    .process-icon {
+        width: 90px;
     }
 
     .process-text {
-        margin-top: 8px;
         width: max-content;
-        max-width: none;
+
+        margin-top: 8px;
 
         font-size: 15px;
 
         white-space: nowrap;
     }
 
-    .process-icon {
-        width: 90px;
+    .process-step {
+        margin-top: 8px;
     }
 }
 
 @media (max-width: 1409px) {
+    .process-inner {
+        padding-top: 150px;
+        padding-bottom: 150px;
+    }
+
+    .process-icon {
+        width: 90px;
+    }
+
+    .process-item:nth-child(1)::before,
+    .process-item:nth-child(7)::before {
+        content: "";
+    }
+
+    .process-item:nth-child(-n + 5)::after {
+        content: "";
+    }
 }
