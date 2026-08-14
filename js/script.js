@@ -13,15 +13,20 @@ $(document).ready(function () {
         initLucide();
         initLanguageSelector();
     });
+
     $("#floating-buttons").load("/components/floating-buttons.html", function () {
         initLucide();
         initTopButton();
         initFloatingMenu();
     });
+
     $("#footer").load("/components/footer.html", initLucide);
     $("#pagination").load("/components/pagination.html", initLucide);
     $("#top_menu").load("/components/top_menu.html", initLucide);
     $("#pop_up").load("/components/pop_up.html", initLucide);
 
     initLucide();
+
+    initAboutAnimation();
+    initCounter();
 });
