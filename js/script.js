@@ -26,9 +26,12 @@ $(document).ready(function () {
     $("#pop_up").load("/components/pop_up.html", initLucide);
 
     initLucide();
+});
 
+$(window).on("load", function () {
     initAboutAnimation();
     initProcessAnimation();
-
     initCounter();
+
+    ScrollTrigger.refresh();
 });
