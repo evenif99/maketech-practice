@@ -780,6 +780,210 @@ main {
     z-index: 1;
 }
 
+/* =========================
+   Solution Overview Section
+========================= */
+.solution-section {
+    width: 100%;
+
+    margin: 20px 0 0;
+    padding: clamp(60px, 5vw, 96px) 0 clamp(80px, 6vw, 120px);
+
+    overflow: hidden;
+}
+
+.solution-inner {
+    --solution-inset: clamp(32px, 4.2vw, 80px);
+
+    width: 100%;
+}
+
+.solution-label {
+    margin-left: var(--solution-inset);
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 10px 20px;
+
+    color: var(--color-black-800);
+    background-color: var(--color-gray-50);
+
+    border-radius: 9999px;
+
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.4;
+}
+
+.solution-row {
+    display: flex;
+    align-items: center;
+    gap: clamp(40px, 4vw, 80px);
+
+    padding: clamp(48px, 4vw, 80px) 0;
+}
+
+.solution-row--reverse {
+    flex-direction: row-reverse;
+}
+
+.solution-row--reverse .solution-row-info {
+    padding-left: 0;
+    padding-right: var(--solution-inset);
+}
+
+.solution-row-info {
+    flex: 0 0 40%;
+    max-width: 640px;
+
+    padding-left: var(--solution-inset);
+}
+
+.solution-row-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    font-size: clamp(28px, 2.2vw, 40px);
+    font-weight: 700;
+    line-height: 1.4;
+
+    color: var(--color-black-700);
+}
+
+.solution-row-brand {
+    height: clamp(56px, 4.75vw, 76px);
+    width: auto;
+}
+
+.solution-row-desc {
+    margin-top: 16px;
+
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 1.4;
+
+    color: rgba(24, 24, 24, 1);
+}
+
+.solution-row-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    width: fit-content;
+
+    margin-top: 24px;
+    padding-bottom: 6px;
+
+    font-size: 20px;
+    font-weight: 400;
+
+    color: var(--color-black-800);
+
+    border-bottom: 1px solid var(--color-black-800);
+}
+
+.solution-row-link svg {
+    width: 16px;
+    height: 16px;
+}
+
+.solution-row-nav {
+    display: flex;
+    gap: 8px;
+
+    margin-top: clamp(32px, 3vw, 48px);
+}
+
+.solution-nav-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 48px;
+    height: 48px;
+
+    color: var(--color-black-700);
+    background-color: transparent;
+
+    border: 1px solid var(--color-black-700);
+    border-radius: 50%;
+
+    transition: all 0.25s ease;
+}
+
+.solution-nav-btn svg {
+    width: 20px;
+    height: 20px;
+}
+
+.solution-row-media {
+    flex: 1 1 0%;
+
+    min-width: 0;
+    overflow: hidden;
+}
+
+.solution-swiper {
+    overflow: visible;
+}
+
+.solution-swiper .swiper-slide {
+    width: clamp(480px, 37.5vw, 720px); /* 영상 카드 자체의 크기 상한은 여기로 이동 */
+    flex-shrink: 0;
+}
+
+.solution-video-item {
+    position: relative;
+
+    border-radius: clamp(16px, 1.5vw, 30px);
+    overflow: hidden;
+}
+
+.solution-video {
+    display: block;
+
+    width: 100%;
+    aspect-ratio: 12 / 7;
+
+    object-fit: cover;
+}
+
+.solution-video-item::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0) 90%);
+
+    pointer-events: none;
+}
+
+.solution-video-caption {
+    position: absolute;
+
+    left: 24px;
+    bottom: 20px;
+
+    max-width: calc(100% - 48px);
+
+    font-size: clamp(16px, 1.3vw, 32px);
+    font-weight: 700;
+    line-height: 1.4;
+
+    color: #ffffff;
+
+    z-index: 1;
+}
+
+/* =========================
+   반응형
+========================= */
+
 @media (min-width: 1281px) and (max-width: 1600px) {
     .company-section::before {
         background-size: 100% auto;
@@ -944,5 +1148,19 @@ main {
 
     .process-item:nth-child(-n + 5)::after {
         content: "";
+    }
+
+    .solution-row {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .solution-row-info {
+        flex: 1 1 auto;
+        width: 100%;
+    }
+
+    .solution-row-media {
+        max-width: 100%;
     }
 }

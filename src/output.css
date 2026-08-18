@@ -21,6 +21,7 @@
     --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     --default-font-family: var(--font-sans);
     --default-mono-font-family: var(--font-mono);
+    --color-black-100: #e8e8e8;
     --color-black-600: #202020;
     --color-black-700: #181818;
     --color-black-800: #000000;
@@ -346,9 +347,6 @@
   }
   .max-w-400 {
     max-width: calc(var(--spacing) * 400);
-  }
-  .min-w-0 {
-    min-width: 0px;
   }
   .min-w-30 {
     min-width: calc(var(--spacing) * 30);

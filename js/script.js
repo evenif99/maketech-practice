@@ -25,6 +25,7 @@ $(document).ready(function () {
     $("#top_menu").load("/components/top_menu.html", initLucide);
     $("#pop_up").load("/components/pop_up.html", initLucide);
 
+    initSolutionSwipers();
     initLucide();
 });
 

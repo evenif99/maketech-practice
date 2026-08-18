@@ -158,3 +158,33 @@ function initProcessAnimation() {
         ease: "power3.out",
     });
 }
+
+function initSolutionSwipers() {
+    const rows = document.querySelectorAll(".solution-row");
+
+    if (!rows.length) return;
+
+    rows.forEach((row) => {
+        const swiperEl = row.querySelector(".solution-swiper");
+        const prevEl = row.querySelector(".solution-nav-prev");
+        const nextEl = row.querySelector(".solution-nav-next");
+
+        if (!swiperEl) return;
+
+        const isReversed = row.classList.contains("solution-row--reverse");
+
+        if (isReversed) {
+            swiperEl.setAttribute("dir", "rtl"); // Swiper 초기화 전에 속성으로 지정
+        }
+
+        new Swiper(swiperEl, {
+            slidesPerView: "auto",
+            spaceBetween: 20,
+            grabCursor: true,
+            navigation: {
+                prevEl,
+                nextEl,
+            },
+        });
+    });
+}
