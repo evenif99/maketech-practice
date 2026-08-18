@@ -174,16 +174,25 @@ function initSolutionSwipers() {
         const isReversed = row.classList.contains("solution-row--reverse");
 
         if (isReversed) {
-            swiperEl.setAttribute("dir", "rtl"); // Swiper 초기화 전에 속성으로 지정
+            swiperEl.setAttribute("dir", "rtl");
         }
 
         new Swiper(swiperEl, {
-            slidesPerView: "auto",
+            slidesPerView: 1.5,
             spaceBetween: 20,
             grabCursor: true,
             navigation: {
                 prevEl,
                 nextEl,
+            },
+
+            on: {
+                init(swiper) {
+                    swiper.slides.forEach((slide) => {
+                        const video = slide.querySelector("video");
+                        if (video) video.play().catch(() => {});
+                    });
+                },
             },
         });
     });
