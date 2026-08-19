@@ -1020,7 +1020,7 @@ main {
 
     width: calc(100% - 64px);
 
-    margin: 40px auto 0;
+    margin: auto;
 
     overflow: hidden;
 
@@ -1049,7 +1049,7 @@ main {
 
     width: 100%;
 
-    padding: clamp(72px, 5vw, 96px) clamp(32px, 4.2vw, 80px) clamp(80px, 6vw, 120px);
+    padding: 140px 80px 180px;
     z-index: 1;
 }
 
@@ -1098,9 +1098,9 @@ main {
     display: flex;
     justify-content: center;
 
-    gap: clamp(20px, 2vw, 32px);
+    gap: 41px;
 
-    width: min(100%, 1120px);
+    width: min(100%, 1600px);
 
     margin: clamp(48px, 4vw, 72px) auto 0;
     padding: 0;
@@ -1116,7 +1116,7 @@ main {
     min-width: 0;
 
     overflow: hidden;
-    border-radius: 20px;
+    border-radius: 30px;
 
     color: #ffffff;
 }
@@ -1141,7 +1141,9 @@ main {
 
     z-index: 1;
 
-    padding: clamp(32px, 2.8vw, 44px) clamp(24px, 2.2vw, 32px);
+    padding: clamp(32px, 2.8vw, 56px) clamp(24px, 2.2vw, 32px);
+
+    text-align: center;
 }
 
 .followup-number {
@@ -1150,7 +1152,7 @@ main {
     font-size: clamp(26px, 2vw, 32px);
     font-weight: 700;
 
-    color: rgba(255, 255, 255, 04);
+    color: rgba(255, 255, 255, 0.4);
 }
 
 .followup-card-title {
@@ -1165,9 +1167,9 @@ main {
     display: block;
 
     width: 30px;
-    height: 0px;
+    height: 1px;
 
-    margin: 20px 0;
+    margin: 30px auto;
 
     background-color: rgba(255, 255, 255, 0.4);
 }
