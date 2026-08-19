@@ -568,9 +568,13 @@ main {
 }
 
 .stat-number {
+    display: inline-block;
+
     font-size: clamp(44px, calc(4.71vw - 22.4px), 68px);
 
     font-weight: 600;
+
+    font-variant-numeric: tabular-nums;
 
     background: linear-gradient(180deg, rgba(194, 54, 78, 1), rgba(194, 54, 78, 0.8), rgba(194, 54, 78, 0.45));
 

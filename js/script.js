@@ -32,6 +32,9 @@ $(document).ready(function () {
 $(window).on("load", function () {
     initAboutAnimation();
     initProcessAnimation();
+    initSolutionOverviewAnimation();
+    initFollowupAnimation();
+    initClientsAnimation();
     initCounter();
 
     ScrollTrigger.refresh();

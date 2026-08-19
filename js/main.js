@@ -70,9 +70,12 @@ function initCounter() {
 
         const suffix = counter.textContent.replace(/[\d,]/g, "");
 
+        const finalText = target.toLocaleString() + suffix;
+        counter.style.minWidth = finalText.length + "ch";
+
         let current = start;
 
-        const duration = 2000;
+        const duration = 3000;
         const interval = 20;
         const step = (target - start) / (duration / interval);
 
@@ -174,7 +177,18 @@ function initSolutionSwipers() {
         const isReversed = row.classList.contains("solution-row--reverse");
         const slideCount = swiperEl.querySelectorAll(".swiper-slide").length;
 
-        const syncActiveVideo = (swiper) => {
+        const pauseAllVideos = (swiper) => {
+            swiper.slides.forEach((slide) => {
+                const video = slide.querySelector("video");
+
+                if (!video) return;
+
+                slide.classList.add("is-inactive");
+                video.pause();
+            });
+        };
+
+        const playActiveVideo = (swiper) => {
             swiper.slides.forEach((slide, index) => {
                 const video = slide.querySelector("video");
 
@@ -196,18 +210,75 @@ function initSolutionSwipers() {
             grabCursor: true,
             speed: 3000,
             initialSlide: isReversed ? slideCount - 1 : 0,
+            slidesOffsetBefore: isReversed ? 20 : 0,
+            slidesOffsetAfter: isReversed ? 0 : 20,
             navigation: {
                 prevEl,
                 nextEl,
             },
             on: {
                 init(swiper) {
-                    syncActiveVideo(swiper);
+                    playActiveVideo(swiper);
                 },
                 slideChange(swiper) {
-                    syncActiveVideo(swiper);
+                    pauseAllVideos(swiper);
+                },
+                slideChangeTransitionEnd(swiper) {
+                    playActiveVideo(swiper);
                 },
             },
+        });
+    });
+}
+
+function initFollowupAnimation() {
+    gsap.from(".followup-inner", {
+        scrollTrigger: {
+            trigger: ".followup-section",
+            start: "top 75%",
+            once: true,
+        },
+
+        opacity: 0,
+        y: 50,
+
+        duration: 0.8,
+        ease: "power3.out",
+    });
+}
+
+function initClientsAnimation() {
+    gsap.from(".clients-heading", {
+        scrollTrigger: {
+            trigger: ".clients-section",
+            start: "top 75%",
+            once: true,
+        },
+
+        opacity: 0,
+        y: 50,
+
+        duration: 0.8,
+        ease: "power3.out",
+    });
+}
+
+function initSolutionOverviewAnimation() {
+    const rows = gsap.utils.toArray(".solution-row");
+
+    rows.forEach((row) => {
+        gsap.from(row, {
+            scrollTrigger: {
+                trigger: row,
+                start: "top 80%",
+                once: true,
+            },
+
+            opacity: 0,
+            y: 60,
+
+            duration: 0.8,
+            ease: "power3.out",
         });
     });
 }
