@@ -203,6 +203,8 @@ main {
     flex-direction: column;
     gap: 8px;
 
+    pointer-events: none;
+
     z-index: 900;
 }
 
@@ -220,6 +222,11 @@ main {
 
     border: 0;
     border-radius: 50%;
+}
+
+.floating-button,
+.quick-menu-item {
+    pointer-events: auto;
 }
 
 .consultation-button {
@@ -795,7 +802,7 @@ main {
 .solution-inner {
     position: relative;
 
-    --solution-inset: clamp(32px, 4.2vw, 110px);
+    --solution-inset: clamp(32px, 8vw, 200px);
     width: 100%;
     max-width: 1920px;
 
@@ -816,6 +823,7 @@ main {
 }
 
 .solution-label {
+    margin-top: 40px;
     margin-left: var(--solution-inset);
 
     display: inline-flex;
@@ -839,25 +847,28 @@ main {
     align-items: center;
     gap: clamp(40px, 4vw, 80px);
 
-    padding: clamp(48px, 4vw, 80px) 0;
+    padding: clamp(40px, 4vw, 50px) 0;
 }
 
 .solution-row-info {
-    flex: 0 0 40%;
-    max-width: 640px;
+    flex: 0 0 70%;
+    max-width: 850px;
 
     padding-left: var(--solution-inset);
 }
 
 .solution-row--reverse {
     flex-direction: row-reverse;
+    gap: 24px;
+
+    padding-right: 80px;
 }
 
 .solution-row--reverse .solution-row-info {
-    flex: 0 0 28%;
-    max-width: 460px;
+    flex: 0 0 60%;
+    max-width: 550px;
 
-    padding-right: var(--solution-inset);
+    padding-right: 32px;
 }
 
 .solution-row-title {
@@ -878,7 +889,7 @@ main {
 
 .solution-row-brand {
     height: clamp(56px, 4.75vw, 76px);
-    width: auto;
+    width: 240px;
 }
 
 .solution-row-desc {
@@ -956,7 +967,7 @@ main {
 
 .solution-row--reverse .solution-row-media {
     margin-right: 0;
-    margin-left: calc(-1 * max(0px, (100vw - 1920px) / 2));
+    margin-left: calc(-1 * max(0px, (100vw - 1920px) / 2) - 60px);
 }
 
 .solution-swiper .swiper-slide {
@@ -969,6 +980,8 @@ main {
 
 .solution-video-item {
     position: relative;
+
+    flex-shrink: 0;
 
     border-radius: clamp(16px, 1.5vw, 30px);
     overflow: hidden;
@@ -1020,7 +1033,7 @@ main {
 
     width: calc(100% - 64px);
 
-    margin: auto;
+    margin: 160px auto;
 
     overflow: hidden;
 
@@ -1183,10 +1196,106 @@ main {
 }
 
 /* =========================
+   Our Clients Section
+========================= */
+
+.clients-section {
+    width: 100%;
+
+    padding: 158px 0 161px;
+
+    text-align: center;
+
+    overflow: hidden;
+}
+
+.clients-heading {
+    text-align: center;
+}
+
+.clients-label {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 10px 20px;
+
+    background-color: var(--color-gray-50);
+    color: var(--color-black-700);
+
+    border-radius: 9999px;
+
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.4;
+}
+
+.clients-title {
+    margin-top: 36px;
+
+    font-size: 44px;
+    font-weight: 700;
+    line-height: 1.4;
+
+    color: var(--color-black-700);
+}
+
+.clients-marquee {
+    position: relative;
+
+    width: 100%;
+
+    margin-top: 74px;
+
+    overflow: hidden;
+}
+
+.clients-track {
+    display: flex;
+    align-items: center;
+
+    gap: 64px;
+    padding: 0 32px;
+
+    width: max-content;
+
+    list-style: none;
+
+    animation: clients-scroll 26s linear infinite;
+}
+
+.clients-item {
+    flex-shrink: 0;
+
+    height: 64px;
+
+    display: flex;
+    align-items: center;
+}
+
+.clients-item img {
+    display: block;
+
+    height: 62px;
+    width: auto;
+
+    object-fit: contain;
+}
+
+@keyframes clients-scroll {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+/* =========================
    반응형
 ========================= */
 
-@media (min-width: 1281px) and (max-width: 1600px) {
+@media (min-width: 1281px) and (max-width: 1535px) {
     .company-section::before {
         background-size: 100% auto;
         background-position: center top;
@@ -1216,6 +1325,21 @@ main {
 
     .stat-value {
         margin-top: clamp(24px, 1.8vw, 28px);
+    }
+
+    .solution-row-info {
+        flex: 0 0 40%;
+        max-width: none; /* 원래 640px 캡이 40%보다 작아서 방해될 수 있어 해제 */
+    }
+
+    .solution-row-media {
+        max-width: 60%;
+    }
+
+    /* reverse 행(2행)도 이 구간에서만 똑같이 40:60으로 맞춤 */
+    .solution-row--reverse .solution-row-info {
+        flex: 0 0 40%;
+        max-width: none; /* 원래 460px 캡 해제 */
     }
 }
 

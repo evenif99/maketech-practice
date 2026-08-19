@@ -179,8 +179,9 @@ function initSolutionSwipers() {
 
         new Swiper(swiperEl, {
             slidesPerView: 1.5,
-            spaceBetween: 20,
-            grabCursor: true,
+            spaceBetween: 32,
+            observer: true,
+            observerParents: true,
             navigation: {
                 prevEl,
                 nextEl,
