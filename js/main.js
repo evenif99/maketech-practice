@@ -172,27 +172,40 @@ function initSolutionSwipers() {
         if (!swiperEl) return;
 
         const isReversed = row.classList.contains("solution-row--reverse");
+        const slideCount = swiperEl.querySelectorAll(".swiper-slide").length;
 
-        if (isReversed) {
-            swiperEl.setAttribute("dir", "rtl");
-        }
+        const syncActiveVideo = (swiper) => {
+            swiper.slides.forEach((slide, index) => {
+                const video = slide.querySelector("video");
+
+                if (!video) return;
+
+                if (index === swiper.activeIndex) {
+                    slide.classList.remove("is-inactive");
+                    video.play().catch(() => {});
+                } else {
+                    slide.classList.add("is-inactive");
+                    video.pause();
+                }
+            });
+        };
 
         new Swiper(swiperEl, {
             slidesPerView: 1.5,
-            spaceBetween: 32,
-            observer: true,
-            observerParents: true,
+            spaceBetween: 20,
+            grabCursor: true,
+            speed: 3000,
+            initialSlide: isReversed ? slideCount - 1 : 0,
             navigation: {
                 prevEl,
                 nextEl,
             },
-
             on: {
                 init(swiper) {
-                    swiper.slides.forEach((slide) => {
-                        const video = slide.querySelector("video");
-                        if (video) video.play().catch(() => {});
-                    });
+                    syncActiveVideo(swiper);
+                },
+                slideChange(swiper) {
+                    syncActiveVideo(swiper);
                 },
             },
         });
