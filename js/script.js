@@ -21,10 +21,8 @@ $(document).ready(function () {
     });
 
     $("#footer").load("/components/footer.html", initLucide);
-    $("#pagination").load("/components/pagination.html", initLucide);
-    $("#top_menu").load("/components/top_menu.html", initLucide);
-    $("#pop_up").load("/components/pop_up.html", initLucide);
 
+    initHeroSwiper();
     initSolutionSwipers();
     initLucide();
 });

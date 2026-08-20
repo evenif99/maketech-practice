@@ -1,5 +1,6 @@
 main {
     padding-top: 87px;
+    overflow-x: hidden;
 }
 
 /* =========================
@@ -13,13 +14,15 @@ main {
     height: 100%;
 }
 
-.nav-link {
-    color: var(--color-black-700);
-    transition: color 0.2s ease;
-}
+.nav-item {
+    & .nav-link {
+        color: var(--color-black-700);
+        transition: color 0.2s ease;
+    }
 
-.nav-item:hover > .nav-link {
-    color: var(--color-red-500);
+    &:hover > .nav-link {
+        color: var(--color-red-500);
+    }
 }
 
 .submenu {
@@ -148,6 +151,13 @@ main {
     border-radius: 32px;
 }
 
+.hero-swiper,
+.hero-swiper .swiper-wrapper,
+.hero-slide {
+    width: 100%;
+    height: 100%;
+}
+
 .hero-video {
     display: block;
 
@@ -163,6 +173,7 @@ main {
     inset: 0;
 
     background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
 }
 
 .hero-content {
@@ -177,6 +188,7 @@ main {
 
     text-align: center;
     color: #ffffff;
+    z-index: 1;
 }
 
 .hero-title {
@@ -186,6 +198,51 @@ main {
     line-height: 1.4;
 
     white-space: nowrap;
+}
+
+.hero-nav {
+    position: absolute;
+
+    right: 40px;
+    bottom: 40px;
+
+    display: flex;
+    gap: 8px;
+
+    z-index: 2;
+}
+
+.hero-nav-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 48px;
+    height: 48px;
+
+    color: #ffffff;
+    background-color: transparent;
+
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+
+    transition: all 0.25s ease;
+}
+
+.hero-nav-btn:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+.hero-nav-btn.swiper-button-disabled {
+    pointer-events: none;
+
+    color: rgba(255, 255, 255, 0.4);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.hero-nav-btn svg {
+    width: 20px;
+    height: 20px;
 }
 
 /* =========================
@@ -221,6 +278,11 @@ main {
 
     border: 0;
     border-radius: 50%;
+    transition: transform 0.2s ease;
+}
+
+.floating-button:hover {
+    transform: scale(1.1);
 }
 
 .floating-button,
@@ -501,13 +563,13 @@ main {
 }
 
 .company-stats {
-    --stat-gap: clamp(48px, calc(14.9vw - 162px), 124px);
+    --stat-gap: clamp(24px, calc(6vw - 40px), 64px);
 
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    width: 100%;
     justify-content: center;
     gap: var(--stat-gap);
-
-    width: fit-content;
 
     margin: clamp(90px, 6.25vw, 120px) auto 0;
 }
@@ -520,7 +582,7 @@ main {
     flex-direction: column;
     justify-content: space-between;
 
-    width: max-content;
+    width: auto;
     height: clamp(240px, 18.75vw, 360px);
 }
 
@@ -904,6 +966,7 @@ main {
 .solution-row--reverse .solution-row-media {
     margin-right: 0;
     margin-left: calc(-1 * max(0px, (100vw - 1920px) / 2));
+    border-radius: 0 clamp(16px, 1.5vw, 30px) clamp(16px, 1.5vw, 30px) 0;
 }
 
 .solution-row-title {
@@ -1007,6 +1070,7 @@ main {
     overflow: hidden;
 
     margin-right: calc(-1 * max(0px, (100vw - 1920px) / 2));
+    border-radius: clamp(16px, 1.5vw, 30px) 0 0 clamp(16px, 1.5vw, 30px);
 }
 
 .solution-swiper {
@@ -1286,6 +1350,7 @@ main {
     flex-shrink: 0;
 
     height: 64px;
+    max-width: 260px;
 
     display: flex;
     align-items: center;
