@@ -180,11 +180,10 @@ main {
 }
 
 .hero-title {
-    font-family: Paperlogy, sans-serif;
+    font-family: "Paperlogy", sans-serif;
     font-size: 54px;
     font-weight: 500;
     line-height: 1.4;
-    letter-spacing: 0;
 
     white-space: nowrap;
 }
@@ -477,13 +476,17 @@ main {
     text-align: right;
 }
 
-.company-title {
+.company-title,
+.followup-title,
+.clients-title {
     font-size: 44px;
     font-weight: 700;
     line-height: 1.4;
 
     color: var(--color-black-700);
+}
 
+.company-title {
     white-space: nowrap;
 }
 
@@ -541,17 +544,18 @@ main {
     gap: 6px;
 }
 
-.stat-name {
+.stat-name,
+.stat-en {
     font-size: clamp(14px, calc(1.18vw - 2.6px), 20px);
+}
 
+.stat-name {
     font-weight: 700;
 
     color: var(--color-black-700);
 }
 
 .stat-en {
-    font-size: clamp(14px, calc(1.18vw - 2.6px), 20px);
-
     font-weight: 500;
 
     color: rgba(24, 24, 24, 0.5);
@@ -570,7 +574,6 @@ main {
 
     font-family: "Paperlogy", sans-serif;
     line-height: 1.2;
-    letter-spacing: 0;
 }
 
 .stat-number {
@@ -617,15 +620,24 @@ main {
     border-radius: 30px;
 }
 
-.process-bg {
+.process-bg,
+.followup-bg {
     position: absolute;
     inset: 0;
 
     pointer-events: none;
+}
+
+.process-bg {
     z-index: 1;
 }
 
-.process-bg img {
+.followup-bg {
+    z-index: 0;
+}
+
+.process-bg img,
+.followup-bg img {
     display: block;
 
     width: 100%;
@@ -649,7 +661,8 @@ main {
     color: #ffffff;
 }
 
-.process-label {
+.process-label,
+.followup-label {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -815,12 +828,9 @@ main {
     margin: 0 auto;
 }
 
-.solution-deco-top {
+.solution-deco-top,
+.solution-deco-bottom {
     position: absolute;
-
-    top: 0;
-    right: 0;
-    transform: translateX(10px) translateY(-180px);
 
     width: clamp(180px, 20vw, 360px);
     height: auto;
@@ -829,18 +839,16 @@ main {
     z-index: 0;
 }
 
-.solution-deco-bottom {
-    position: absolute;
+.solution-deco-top {
+    top: 0;
+    right: 0;
+    transform: translateX(10px) translateY(-180px);
+}
 
+.solution-deco-bottom {
     bottom: 0;
     left: 0;
     transform: translateX(-100px) translateY(250px);
-
-    width: clamp(180px, 20vw, 480px);
-    height: auto;
-
-    pointer-events: none;
-    z-index: 0;
 }
 
 .solution-label {
@@ -1052,7 +1060,7 @@ main {
     position: absolute;
     inset: 0;
 
-    background-color: #000000;
+    background-color: var(--color-black-800);
 
     z-index: 1;
 }
@@ -1090,22 +1098,7 @@ main {
     border-radius: 30px;
 }
 
-.followup-bg {
-    position: absolute;
-    inset: 0;
-
-    z-index: 0;
-    pointer-events: none;
-}
-
-.followup-bg img {
-    display: block;
-
-    width: 100%;
-    height: 100%;
-
-    object-fit: cover;
-}
+/* .followup-bg 스타일은 .process-bg와 통합됨 (Solution Process Section 참고) */
 
 .followup-inner {
     position: relative;
@@ -1120,31 +1113,11 @@ main {
     text-align: center;
 }
 
-.followup-label {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+/* .followup-label 스타일은 .process-label과 통합됨 (Solution Process Section 참고) */
 
-    padding: 10px 20px;
-
-    color: var(--color-red-500);
-
-    border: 1px solid var(--color-red-500);
-    border-radius: 9999px;
-
-    font-size: 16px;
-    font-weight: 700;
-    line-height: 1.4;
-}
-
+/* .followup-title 공통 폰트 스타일은 .company-title과 통합됨 (About Us Section 참고) */
 .followup-title {
     margin-top: 20px;
-
-    font-size: 44px;
-    font-weight: 700;
-    line-height: 1.4;
-
-    color: var(--color-black-700);
 }
 
 .followup-desc {
@@ -1280,14 +1253,9 @@ main {
     line-height: 1.4;
 }
 
+/* .clients-title 공통 폰트 스타일은 .company-title과 통합됨 (About Us Section 참고) */
 .clients-title {
     margin-top: 36px;
-
-    font-size: 44px;
-    font-weight: 700;
-    line-height: 1.4;
-
-    color: var(--color-black-700);
 }
 
 .clients-marquee {
