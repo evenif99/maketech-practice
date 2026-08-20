@@ -210,8 +210,9 @@ function initSolutionSwipers() {
             grabCursor: true,
             speed: 3000,
             initialSlide: isReversed ? slideCount - 1 : 0,
-            slidesOffsetBefore: isReversed ? 20 : 0,
-            slidesOffsetAfter: isReversed ? 0 : 20,
+            slidesOffsetBefore: 0,
+            slidesOffsetAfter: 0,
+
             navigation: {
                 prevEl,
                 nextEl,
