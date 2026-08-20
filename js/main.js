@@ -208,7 +208,7 @@ function initSolutionSwipers() {
             slidesPerView: 1.5,
             spaceBetween: 20,
             grabCursor: true,
-            speed: 3000,
+            speed: 2000,
             initialSlide: isReversed ? slideCount - 1 : 0,
             slidesOffsetBefore: 0,
             slidesOffsetAfter: 0,

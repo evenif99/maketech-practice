@@ -22,40 +22,42 @@ remove: 파일을 삭제만 한 경우
 
 ## 프로젝트 구조
 
+```
 MAKETECH-PR/
 ├─ .vscode/
-│ └─ settings.json
-├─ assets/ # 정적 리소스
-│ ├─ fonts/
-│ ├─ images/
-│ └─ videos/
-├─ components/ # 재사용 컴포넌트 (jQuery로 로드)
-│ ├─ floating-buttons.html
-│ ├─ footer.html
-│ ├─ header.html
-│ ├─ pagination.html
-│ ├─ pop_up.html
-│ └─ top-menu.html
+│  └─ settings.json
+├─ assets/                  # 정적 리소스
+│  ├─ fonts/
+│  ├─ images/
+│  └─ videos/
+├─ components/               # 재사용 컴포넌트 (jQuery로 로드)
+│  ├─ floating-buttons.html
+│  ├─ footer.html
+│  ├─ header.html
+│  ├─ pagination.html
+│  ├─ pop_up.html
+│  └─ top-menu.html
 ├─ css/
-│ ├─ common.css # 공통 스타일
-│ └─ style.css # 페이지별 커스텀 스타일
+│  ├─ common.css             # 공통 스타일
+│  └─ style.css              # 페이지별 커스텀 스타일
 ├─ flags/
 ├─ js/
-│ ├─ jquery.js
-│ ├─ main.js # 메인 스크립트 (GSAP/ScrollTrigger 등)
-│ └─ script.js
+│  ├─ jquery.js
+│  ├─ main.js                # 메인 스크립트 (GSAP/ScrollTrigger 등)
+│  └─ script.js
 ├─ node_modules/
-├─ pages/ # 서브 페이지 (현재 메인 페이지 1개만 작업 중이라 비어 있음)
+├─ pages/                    # 서브 페이지 (현재 메인 페이지 1개만 작업 중이라 비어 있음)
 ├─ src/
-│ ├─ input.css # Tailwind 소스
-│ └─ output.css # Tailwind 빌드 결과물
+│  ├─ input.css              # Tailwind 소스
+│  └─ output.css             # Tailwind 빌드 결과물
 ├─ .gitignore
 ├─ .prettierignore
 ├─ .prettierrc
-├─ index.html # 메인 페이지
+├─ index.html                # 메인 페이지
 ├─ package.json
 ├─ package-lock.json
 └─ README.md
+```
 
 사용 스택
 Markup/Style: Tailwind CSS(src/input.css → src/output.css) + 커스텀 CSS(common.css, style.css)
