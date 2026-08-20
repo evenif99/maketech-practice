@@ -621,7 +621,6 @@ main {
     position: absolute;
     inset: 0;
 
-    z-index: 0;
     pointer-events: none;
     z-index: 1;
 }
@@ -809,7 +808,7 @@ main {
 }
 
 .solution-inner {
-    --solution-inset: clamp(32px, 8vw, 200px);
+    --solution-inset: clamp(5px, 8vw, 200px);
     width: 100%;
     max-width: 1920px;
 
@@ -819,8 +818,9 @@ main {
 .solution-deco-top {
     position: absolute;
 
-    top: -200px;
+    top: 0;
     right: 0;
+    transform: translateX(10px) translateY(-180px);
 
     width: clamp(180px, 20vw, 360px);
     height: auto;
@@ -872,8 +872,8 @@ main {
 }
 
 .solution-row-info {
-    flex: 0 0 70%;
-    max-width: 850px;
+    flex: 0 0 35%;
+    max-width: 800px;
 
     padding-left: var(--solution-inset);
 }
@@ -903,7 +903,7 @@ main {
     align-items: center;
     gap: 12px;
 
-    font-size: clamp(28px, 2.2vw, 40px);
+    font-size: 40px;
     font-weight: 700;
     line-height: 1.4;
 
@@ -979,13 +979,7 @@ main {
     transition: all 0.25s ease;
 }
 
-.solution-nav-btn.swiper-button-disabled {
-    pointer-events: none;
-
-    color: color-mix(in srgb, var(--color-black-700) 50%, transparent);
-    border-color: color-mix(in srgb, var(--color-black-700) 50%, transparent);
-}
-
+.solution-nav-btn.swiper-button-disabled,
 .solution-row--reverse .solution-nav-btn.swiper-button-disabled {
     pointer-events: none;
 
@@ -1433,14 +1427,6 @@ body::-webkit-scrollbar-button {
         margin-top: 120px;
 
         row-gap: 70px;
-    }
-
-    .process-icon {
-        width: 120px;
-    }
-
-    .process-list {
-        width: min(100%, 1370px);
     }
 
     .process-icon {
