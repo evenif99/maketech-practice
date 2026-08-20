@@ -325,6 +325,8 @@ main {
 
     border-radius: 50%;
     overflow: hidden;
+
+    transition: transform 0.2s ease;
 }
 
 .quick-menu-gif {
@@ -346,6 +348,10 @@ main {
 
 .quick-faq .quick-menu-icon {
     background-color: #a0b243;
+}
+
+.quick-menu-item:hover .quick-menu-icon {
+    transform: scale(1.1);
 }
 
 .quick-menu-text {
@@ -617,6 +623,7 @@ main {
 
     z-index: 0;
     pointer-events: none;
+    z-index: 1;
 }
 
 .process-bg img {
@@ -634,8 +641,7 @@ main {
     width: 100%;
 
     padding: clamp(72px, 5vw, 96px) clamp(32px, 4.2vw, 80px) clamp(80px, 6vw, 120px);
-
-    z-index: 1;
+    z-index: 10;
 }
 
 .process-heading {
@@ -795,17 +801,14 @@ main {
    Solution Overview Section
 ========================= */
 .solution-section {
+    position: relative;
     width: 100%;
 
-    margin: 20px 0 0;
-    padding: clamp(60px, 5vw, 96px) 0 clamp(30px, 3.6vw, 70px);
-
-    overflow: hidden;
+    margin: 140px 0 0;
+    padding: clamp(5px, 4vw, 20px) 0 clamp(30px, 3.6vw, 70px);
 }
 
 .solution-inner {
-    position: relative;
-
     --solution-inset: clamp(32px, 8vw, 200px);
     width: 100%;
     max-width: 1920px;
@@ -813,13 +816,27 @@ main {
     margin: 0 auto;
 }
 
-.solution-deco {
+.solution-deco-top {
     position: absolute;
 
-    top: 0;
+    top: -200px;
     right: 0;
 
-    width: clamp(180px, 15vw, 280px);
+    width: clamp(180px, 20vw, 360px);
+    height: auto;
+
+    pointer-events: none;
+    z-index: 0;
+}
+
+.solution-deco-bottom {
+    position: absolute;
+
+    bottom: 0;
+    left: 0;
+    transform: translateX(-100px) translateY(250px);
+
+    width: clamp(180px, 20vw, 480px);
     height: auto;
 
     pointer-events: none;
@@ -910,6 +927,7 @@ main {
     line-height: 1.4;
 
     color: rgba(24, 24, 24, 1);
+    white-space: nowrap;
 }
 
 .solution-row-link {
@@ -1327,6 +1345,39 @@ main {
     to {
         transform: translateX(-50%);
     }
+}
+
+/* =========================
+   Custom Scrollbar
+========================= */
+
+html {
+    scrollbar-width: thin;
+    scrollbar-color: #4a4a4a transparent;
+}
+
+body::-webkit-scrollbar {
+    width: 6px;
+}
+
+body::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: #4a4a4a;
+    border-radius: 0;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+    background-color: #6a6a6a;
+}
+
+html::-webkit-scrollbar-button,
+body::-webkit-scrollbar-button {
+    display: none;
+    width: 0;
+    height: 0;
 }
 
 /* =========================

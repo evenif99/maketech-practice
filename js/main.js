@@ -139,7 +139,6 @@ function initAboutAnimation() {
                 opacity: 0,
                 y: 50,
                 duration: 0.8,
-                stagger: 0.1,
                 ease: "power3.out",
             },
             "-=0.3",
@@ -207,7 +206,6 @@ function initSolutionSwipers() {
         new Swiper(swiperEl, {
             slidesPerView: 1.5,
             spaceBetween: 20,
-            grabCursor: true,
             speed: 2000,
             initialSlide: isReversed ? slideCount - 1 : 0,
             slidesOffsetBefore: 0,
